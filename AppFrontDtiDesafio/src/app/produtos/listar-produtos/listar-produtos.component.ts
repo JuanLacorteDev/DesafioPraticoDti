@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { faPencilAlt, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ModalConfirmarExclusaoComponent } from 'src/app/modal-confirmar-exclusao/modal-confirmar-exclusao.component';
 import { Produto } from '../produto';

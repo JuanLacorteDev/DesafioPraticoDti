@@ -17,7 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
     }
     .light-blue-backdrop {
       background-color: #5cb3fd;
-    }` 
+    }`
   ]
 })
 export class ModalConfirmarExclusaoComponent {

@@ -8,20 +8,19 @@
             <th>
                 Valor
             </th>
-            <th>
+            <th colspan="2">
                 Quantidade
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of produtos">
             <td>{{item.nome}}</td>
-            <td>{{item.valorUnitario}}</td>
+            <td>{{item.valorUnitario | currency }}</td>
             <td>{{item.quantidade}}</td>
             <td>
-                <button class="btn btn-danger mr-1" (click)="abrirModalExclusao(item.id)" ><fa-icon [icon]="faTrash"></fa-icon></button>
-                <button class="btn btn-info" (click)="editar(item.id)"><fa-icon [icon]="faPencil"></fa-icon></button>
+                <button class="btn btn-danger float-right mr-2" (click)="abrirModalExclusao(item.id)" ><fa-icon [icon]="faTrash"></fa-icon></button>
+                <button class="btn btn-info float-right mr-1" (click)="editar(item.id)"><fa-icon [icon]="faPencil"></fa-icon></button>
             </td>
         </tr>
     </tbody>

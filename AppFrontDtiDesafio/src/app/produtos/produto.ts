@@ -4,13 +4,13 @@ export class Produto {
         this.id = '';
         this.nome = '';
         this.quantidade = '';
-        this.valorUnitario = '';
+        this.valorUnitario = 0;
     }
 
     public id: string;
     public nome: string;
     public quantidade: string;
-    public valorUnitario: string;
+    public valorUnitario: number;
 
     
 }

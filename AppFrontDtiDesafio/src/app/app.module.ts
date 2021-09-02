@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -8,11 +8,15 @@ import { HomeComponent } from './navegacao/home/home.component';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { ListarProdutosComponent } from './produtos/listar-produtos/listar-produtos.component';
-import { EditarProdutosComponent } from './produtos/editar-produtos/editar-produtos.component';
+import { EditarProdutoComponent } from './produtos/editar-produto/editar-produto.component';
 import { ProdutoService } from './produtos/produtos.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalConfirmarExclusaoComponent } from './modal-confirmar-exclusao/modal-confirmar-exclusao.component';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -21,7 +25,7 @@ import { ModalConfirmarExclusaoComponent } from './modal-confirmar-exclusao/moda
     FooterComponent,
     HomeComponent,
     ListarProdutosComponent,
-    EditarProdutosComponent,
+    EditarProdutoComponent,
     ModalConfirmarExclusaoComponent,
   ],
   imports: [
@@ -30,7 +34,11 @@ import { ModalConfirmarExclusaoComponent } from './modal-confirmar-exclusao/moda
     FontAwesomeModule,
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
-  providers: [ProdutoService],
+  providers: [
+    ProdutoService,
+    { provide: LOCALE_ID, useValue: 'pt-BR'},
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
