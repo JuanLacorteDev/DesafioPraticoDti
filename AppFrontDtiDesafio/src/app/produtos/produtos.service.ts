@@ -18,16 +18,16 @@ export class ProdutoService {
         return this.httpClient.delete(`${this.UrlService}/produtos/` + id);
     }
 
-    public adicionarProduto(produto: Produto): Observable<Produto> {
-        const headers = new HttpHeaders();
-        headers.set('Content-Type', 'application/json');
-        return this.httpClient.post<Produto>(`${this.UrlService}/produtos/`, 
-        {
-        "nome": produto.nome,
-        "quantidade": produto.quantidade,
-        "valorUnitario": 7.8},
-        {headers: headers}
-        );
+    public obterProdutoId(id: any): Observable<any>{
+        return this.httpClient.get(`${this.UrlService}/produtos/` + id);
+    }
+
+    public adicionarProduto(produto: Produto): Observable<any> {
+        return this.httpClient.post<Produto>(`${this.UrlService}/produtos/`, JSON.parse(JSON.stringify(produto)));
+    }
+
+    public atualizarProduto(id: any, produto: Produto): Observable<any> {
+        return this.httpClient.put<Produto>(`${this.UrlService}/produtos/` + id, JSON.parse(JSON.stringify(produto)));
     }
 
 }

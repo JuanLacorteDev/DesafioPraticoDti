@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, CurrencyPipe } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Produto } from '../produto';
 import { ProdutoService } from '../produtos.service';
+import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-novo-produto',
@@ -11,11 +12,13 @@ import { ProdutoService } from '../produtos.service';
 export class NovoProdutoComponent implements OnInit {
 
   public formulario!: FormGroup;
-  public valorTransformado: any;
   public produto: Produto = new Produto();
 
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService) { }
+  constructor(private fb: FormBuilder, 
+    private produtoService: ProdutoService,
+     private route: Router,
+     private _location: Location) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -33,9 +36,15 @@ export class NovoProdutoComponent implements OnInit {
     this.produto = Object.assign({}, this.produto, this.formulario.value)
     this.produtoService.adicionarProduto(this.produto).subscribe(
       result => {
-        console.log(result);
+        if(result.success){
+          this.route.navigate(['produtos/listar']);
+        }
       }
     );
+  }
+
+  public voltar(){
+    this._location.back();
   }
 
 }

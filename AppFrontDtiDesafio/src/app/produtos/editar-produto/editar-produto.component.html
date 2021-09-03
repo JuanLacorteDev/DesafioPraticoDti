@@ -1,2 +1,32 @@
 <div>
+    <h2 class="ml-3">Editar Produto</h2>
+    <hr>
+    <form novalidate (ngSubmit)="editarProduto()" [formGroup]="formulario">
+        <div class="form-group">
+            <label class="form-label col-md-4 control-label">Nome</label>
+            <div class="col-md-10">
+                <input placeholder="..." class="form-control col-4" type="text" formControlName="nome">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label col-md-4 control-label">Valor</label>
+            <div class="col-md-10">
+                <input placeholder="0.00" class="form-control col-4" type="text" formControlName="valorUnitario">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label col-md-4 control-label">Quantidade</label>
+            <div class="col-md-3">
+                <input class="form-control col-md-4" type="number" formControlName="quantidade">
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <button class="btn btn-success float-right mr-5" type="submit">Salvar</button>
+                <button class="btn btn-info float-left" (click)="voltar()">Voltar</button>
+            </div>
+        </div>
+    </form>
 </div>

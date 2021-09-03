@@ -16,7 +16,7 @@
     <tbody>
         <tr *ngFor="let item of produtos">
             <td>{{item.nome}}</td>
-            <td>{{item.valorUnitario | currency }}</td>
+            <td>{{item.valorUnitario | currency : 'BRL' : true: '.2' }}</td>
             <td>{{item.quantidade}}</td>
             <td>
                 <button class="btn btn-danger float-right mr-2" (click)="abrirModalExclusao(item.id)" ><fa-icon [icon]="faTrash"></fa-icon></button>

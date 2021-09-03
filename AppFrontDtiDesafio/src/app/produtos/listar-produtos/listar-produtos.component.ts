@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
+import { Router } from '@angular/router';
 import { faPencilAlt, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ModalConfirmarExclusaoComponent } from 'src/app/modal-confirmar-exclusao/modal-confirmar-exclusao.component';
 import { Produto } from '../produto';
@@ -10,7 +11,7 @@ import { ProdutoService } from '../produtos.service';
 })
 export class ListarProdutosComponent implements OnInit {
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService, private route: Router) { }
 
   @ViewChild('modalConfirmarExcluir') modalConfirmarExclusao: ModalConfirmarExclusaoComponent | undefined;
 
@@ -57,7 +58,7 @@ export class ListarProdutosComponent implements OnInit {
   }
 
   public editar(id: any) {
-
+    this.route.navigate([`produtos/editar/${id}`])
   }
 
 }
