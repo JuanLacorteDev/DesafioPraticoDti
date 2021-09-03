@@ -14,8 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalConfirmarExclusaoComponent } from './modal-confirmar-exclusao/modal-confirmar-exclusao.component';
 
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, CurrencyPipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { NovoProdutoComponent } from './produtos/novo-produto/novo-produto.component';
+import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -27,15 +30,20 @@ registerLocaleData(localePt);
     ListarProdutosComponent,
     EditarProdutoComponent,
     ModalConfirmarExclusaoComponent,
+    NovoProdutoComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
   providers: [
     ProdutoService,
+    CurrencyPipe,
     { provide: LOCALE_ID, useValue: 'pt-BR'},
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
   ],
