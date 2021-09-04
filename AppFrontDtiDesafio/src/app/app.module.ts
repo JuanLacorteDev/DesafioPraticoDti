@@ -19,6 +19,7 @@ import localePt from '@angular/common/locales/pt';
 import { NovoProdutoComponent } from './produtos/novo-produto/novo-produto.component';
 import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
 import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
+import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 registerLocaleData(localePt);
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -49,6 +50,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     FormsModule,
     ReactiveFormsModule,
     CurrencyMaskModule,
+    NgBootstrapFormValidationModule.forRoot(),
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
   providers: [

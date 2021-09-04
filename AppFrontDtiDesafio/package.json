@@ -24,6 +24,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^5.1.0",
+    "ng-bootstrap-form-validation": "^9.0.1",
     "ng2-currency-mask": "^12.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

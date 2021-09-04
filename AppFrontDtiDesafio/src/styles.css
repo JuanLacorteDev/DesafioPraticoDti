@@ -7,10 +7,14 @@
     padding-bottom: 100px;
     margin-right: auto;
     margin-left: auto;
-    overflow:hidden;
- }
+    overflow: hidden;
+}
 
- .footer {
-  height: 50px;
-  text-align: center;
-} 
+.footer {
+    height: 50px;
+    text-align: center;
+}
+
+.invalid-feedback {
+    margin-left: 2%;
+}
