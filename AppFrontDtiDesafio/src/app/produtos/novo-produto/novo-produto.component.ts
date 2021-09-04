@@ -26,7 +26,6 @@ export class NovoProdutoComponent extends FormProdutoComponent implements OnInit
   }
 
   public salvarProduto(){
-    
     if(this.formulario.invalid) return
 
     this.produto = Object.assign({}, this.produto, this.formulario.value)
@@ -41,6 +40,10 @@ export class NovoProdutoComponent extends FormProdutoComponent implements OnInit
 
   public voltar(){
     this._location.back();
+  }
+
+  public limpar(){
+    this.formulario.reset();
   }
 
 }

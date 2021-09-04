@@ -17,10 +17,10 @@ export class FormProdutoComponent implements OnInit {
       error: 'required',
       format: (label, error) => `${label?.toUpperCase()} é obrigatório!`
     }, 
-    // {
-    //   error: 'pattern',
-    //   format: (label, error) => `${label?.toUpperCase()} DOESN'T LOOK RIGHT...`
-    // }
+    {
+      error: 'pattern',
+      format: (label, error) => `${label?.toUpperCase()} formato de entrada inválido!`
+    }
   ];
 
   constructor(private fb: FormBuilder) { }
@@ -31,7 +31,7 @@ export class FormProdutoComponent implements OnInit {
   public createForm(){
     this.formulario = this.fb.group({
       nome: ['', Validators.required],
-      valorUnitario: ['', Validators.required],
+      valorUnitario: ['', [Validators.required]],
       quantidade: ['', Validators.required],
     })
   }
