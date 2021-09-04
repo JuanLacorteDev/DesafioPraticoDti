@@ -5,48 +5,29 @@ import { ProdutoService } from '../produtos.service';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
 import { ErrorMessage } from 'ng-bootstrap-form-validation/lib/Models/error-message';
+import { FormProdutoComponent } from '../form-produto/form-produto.component';
 
 @Component({
   selector: 'app-novo-produto',
   templateUrl: './novo-produto.component.html'
 })
-export class NovoProdutoComponent implements OnInit {
+export class NovoProdutoComponent extends FormProdutoComponent implements OnInit {
 
-  public formulario!: FormGroup;
-  public produto: Produto = new Produto();
-
-  public customErrorMessages: ErrorMessage[] = [
-    {
-      error: 'required',
-      format: (label, error) => `${label?.toUpperCase()} é obrigatório!`
-    }, 
-    // {
-    //   error: 'pattern',
-    //   format: (label, error) => `${label?.toUpperCase()} DOESN'T LOOK RIGHT...`
-    // }
-  ];
-  constructor(private fb: FormBuilder, 
+  constructor(
+    fb: FormBuilder,
     private produtoService: ProdutoService,
-     private route: Router,
-     private _location: Location) { }
+    private route: Router,
+    private _location: Location) {
+    super(fb);
+  }
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  private createForm(){
-    this.formulario = this.fb.group({
-      nome: ['', Validators.required],
-      valorUnitario: ['', Validators.required],
-      quantidade: ['', Validators.required],
-    })
-  }
-
   public salvarProduto(){
     
-    if(!this.formulario.valid){
-      return;
-    }
+    if(this.formulario.invalid) return
 
     this.produto = Object.assign({}, this.produto, this.formulario.value)
     this.produtoService.adicionarProduto(this.produto).subscribe(
@@ -56,13 +37,6 @@ export class NovoProdutoComponent implements OnInit {
         }
       }
     );
-  }
-
-  public marcarCamposObrigatorios(){
-    const controls = this.formulario.controls;
-    for(let c in controls){
-      this.formulario.controls[c].markAsDirty();
-    }
   }
 
   public voltar(){

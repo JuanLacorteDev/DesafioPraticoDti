@@ -20,6 +20,7 @@ import { NovoProdutoComponent } from './produtos/novo-produto/novo-produto.compo
 import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
 import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
+import { FormProdutoComponent } from './produtos/form-produto/form-produto.component';
 registerLocaleData(localePt);
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -42,6 +43,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     EditarProdutoComponent,
     ModalConfirmarExclusaoComponent,
     NovoProdutoComponent,
+    FormProdutoComponent,
   ],
   imports: [
     BrowserModule,
