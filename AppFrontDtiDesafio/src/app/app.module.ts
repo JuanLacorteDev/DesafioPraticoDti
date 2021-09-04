@@ -18,8 +18,18 @@ import { registerLocaleData, CurrencyPipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { NovoProdutoComponent } from './produtos/novo-produto/novo-produto.component';
 import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
-import { NgxMaskModule } from 'ngx-mask';
+import { CurrencyMaskConfig, CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
 registerLocaleData(localePt);
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "left",
+  allowNegative: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: "."
+};
 
 @NgModule({
   declarations: [
@@ -38,14 +48,14 @@ registerLocaleData(localePt);
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot(),
+    CurrencyMaskModule,
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })]
   ],
   providers: [
     ProdutoService,
     CurrencyPipe,
-    { provide: LOCALE_ID, useValue: 'pt-BR'},
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
+    { provide: LOCALE_ID, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]
 })
